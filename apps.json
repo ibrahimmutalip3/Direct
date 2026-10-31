@@ -23,7 +23,7 @@
         "category": "Tools",
         "version": "5.0.2",
         "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/esign-v5.0.2/ESign_5.0.2_1793441567.ipa",
-        "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/delta.plist",
+        "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/esign.plist",
         "releaseTag": "esign-v5.0.2",
         "assetName": "ESign_5.0.2_1793441567.ipa",
         "icon": "./assets/icons/esign.png",
