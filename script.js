@@ -1,186 +1,192 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const appsGrid = document.getElementById("appsGrid");
     const searchInput = document.getElementById("searchInput");
     const appCount = document.getElementById("appCount");
-    const categoryButtons = document.querySelectorAll(".category");
+    const sortSelect = document.getElementById("sortSelect");
+
+    if (!appsGrid) return;
 
     let apps = [];
     let activeCategory = "All";
     let searchQuery = "";
+    let sortMode = "default";
 
-    // LOAD APPLICATIONS
-    async function loadApps() {
-        try {
-            const response = await fetch("./apps.json");
+    try {
+        const response = await fetch("./apps.json");
 
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            if (!Array.isArray(data)) {
-                throw new Error("Invalid apps.json format");
-            }
-
-            apps = data.filter(app =>
-                app &&
-                typeof app.name === "string" &&
-                typeof app.description === "string" &&
-                typeof app.category === "string"
-            );
-
-            renderApps();
-        } catch (error) {
-            console.error("Failed to load applications:", error);
-
-            appsGrid.innerHTML = `
-                <div class="empty-state">
-                    <h3>Unable to load applications</h3>
-                    <p>Please try refreshing the page.</p>
-                </div>
-            `;
-
-            appCount.textContent = "Unavailable";
-        }
-    }
-
-    // CREATE APPLICATION CARD
-    function createAppCard(app, index) {
-        const card = document.createElement("article");
-        card.className = "app-card";
-        card.style.animationDelay = `${Math.min(index * 60, 360)}ms`;
-
-        const top = document.createElement("div");
-        top.className = "app-card-top";
-
-        const icon = document.createElement("img");
-        icon.className = "app-icon";
-        icon.src = app.icon || "./assets/logo.svg";
-        icon.alt = `${app.name} icon`;
-        icon.loading = "lazy";
-
-        icon.onerror = () => {
-            icon.onerror = null;
-            icon.src = "./assets/logo.svg";
-        };
-
-        const category = document.createElement("span");
-        category.className = "app-category";
-        category.textContent = app.category;
-
-        top.append(icon, category);
-
-        const name = document.createElement("h3");
-        name.textContent = app.name;
-
-        const description = document.createElement("p");
-        description.className = "app-description";
-        description.textContent = app.description;
-
-        const bottom = document.createElement("div");
-        bottom.className = "app-card-bottom";
-
-        const version = document.createElement("span");
-        version.className = "app-version";
-        version.textContent = app.version
-            ? `Version ${app.version}`
-            : "Application";
-
-        const link = document.createElement("a");
-        link.className = "app-link";
-        link.textContent = "View app ↗";
-
-        if (typeof app.id === "string" && /^[a-zA-Z0-9_-]+$/.test(app.id)) {
-            link.href = `app.html?id=${encodeURIComponent(app.id)}`;
-        } else {
-            link.href = "#";
-            link.setAttribute("aria-disabled", "true");
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
         }
 
-        bottom.append(version, link);
-        card.append(top, name, description, bottom);
+        apps = await response.json();
 
-        return card;
+        if (!Array.isArray(apps)) {
+            throw new Error("Invalid apps.json format");
+        }
+
+        renderApps();
+    } catch (error) {
+        console.error("Direct:", error);
+
+        appsGrid.innerHTML = `
+            <p class="apps-error">
+                Unable to load applications. Please try again later.
+            </p>
+        `;
     }
 
-    // RENDER APPLICATIONS
-    function renderApps() {
-        appsGrid.replaceChildren();
+    function compareVersions(a, b) {
+        const first = String(a || "0").split(".").map(Number);
+        const second = String(b || "0").split(".").map(Number);
 
-        const filteredApps = apps.filter(app => {
-            const matchesCategory =
+        for (let i = 0; i < Math.max(first.length, second.length); i++) {
+            const x = first[i] || 0;
+            const y = second[i] || 0;
+
+            if (x !== y) return y - x;
+        }
+
+        return 0;
+    }
+
+    function getFilteredApps() {
+        let result = apps.filter(app => {
+            const categoryMatch =
                 activeCategory === "All" ||
-                app.category.toLowerCase() === activeCategory.toLowerCase();
+                app.category === activeCategory;
 
-            const searchableText = [
+            const query = searchQuery.toLowerCase();
+
+            const searchMatch = [
                 app.name,
                 app.description,
                 app.category
-            ].join(" ").toLowerCase();
-
-            const matchesSearch = searchableText.includes(
-                searchQuery.toLowerCase()
+            ].some(value =>
+                String(value || "").toLowerCase().includes(query)
             );
 
-            return matchesCategory && matchesSearch;
+            return categoryMatch && searchMatch;
         });
 
-        appCount.textContent =
-            `${filteredApps.length} ${filteredApps.length === 1 ? "app" : "apps"}`;
+        switch (sortMode) {
+            case "name":
+                result.sort((a, b) =>
+                    String(a.name || "").localeCompare(
+                        String(b.name || "")
+                    )
+                );
+                break;
+
+            case "newest":
+                result.sort((a, b) =>
+                    new Date(b.dateAdded || 0) -
+                    new Date(a.dateAdded || 0)
+                );
+                break;
+
+            case "version":
+                result.sort((a, b) =>
+                    compareVersions(a.version, b.version)
+                );
+                break;
+        }
+
+        return result;
+    }
+
+    function renderApps() {
+        const filteredApps = getFilteredApps();
+
+        appsGrid.innerHTML = "";
+
+        if (appCount) {
+            appCount.textContent = filteredApps.length;
+        }
 
         if (filteredApps.length === 0) {
-            const empty = document.createElement("div");
-            empty.className = "empty-state";
-
-            const title = document.createElement("h3");
-            title.textContent = "No applications found";
-
-            const description = document.createElement("p");
-            description.textContent = "Try another search or category.";
-
-            empty.append(title, description);
-            appsGrid.appendChild(empty);
+            appsGrid.innerHTML = `
+                <div class="empty-state">
+                    <h3>No applications found</h3>
+                    <p>Try another search or category.</p>
+                </div>
+            `;
             return;
         }
 
-        filteredApps.forEach((app, index) => {
-            appsGrid.appendChild(createAppCard(app, index));
+        filteredApps.forEach(app => {
+            const card = document.createElement("a");
+
+            card.className = "app-card";
+            card.href = `./app.html?id=${encodeURIComponent(app.id)}`;
+
+            const icon = document.createElement("img");
+            icon.className = "app-icon";
+            icon.src = app.icon || "./assets/logo.svg";
+            icon.alt = "";
+            icon.loading = "lazy";
+
+            icon.onerror = () => {
+                icon.src = "./assets/logo.svg";
+            };
+
+            const content = document.createElement("div");
+            content.className = "app-card-content";
+
+            const name = document.createElement("h3");
+            name.className = "app-card-name";
+            name.textContent = app.name || "Unnamed app";
+
+            const description = document.createElement("p");
+            description.className = "app-card-description";
+            description.textContent = app.description || "";
+
+            const metadata = document.createElement("div");
+            metadata.className = "app-card-meta";
+
+            const category = document.createElement("span");
+            category.textContent = app.category || "Other";
+
+            const version = document.createElement("span");
+            version.textContent = `v${app.version || "1.0.0"}`;
+
+            metadata.append(category, version);
+            content.append(name, description, metadata);
+            card.append(icon, content);
+
+            appsGrid.appendChild(card);
         });
     }
 
-    // SEARCH
-    searchInput.addEventListener("input", event => {
-        searchQuery = event.target.value.trim();
-        renderApps();
-    });
+    if (searchInput) {
+        searchInput.addEventListener("input", event => {
+            searchQuery = event.target.value.trim();
+            renderApps();
+        });
+    }
 
-    // CATEGORY FILTERS
-    categoryButtons.forEach(button => {
+    if (sortSelect) {
+        sortSelect.addEventListener("change", event => {
+            sortMode = event.target.value;
+            renderApps();
+        });
+    }
+
+    document.querySelectorAll("[data-category]").forEach(button => {
         button.addEventListener("click", () => {
-            categoryButtons.forEach(item => {
-                item.classList.remove("active");
-            });
+            activeCategory = button.dataset.category;
 
-            button.classList.add("active");
-            activeCategory = button.dataset.category || "All";
+            document.querySelectorAll("[data-category]").forEach(item => {
+                item.classList.toggle("active", item === button);
+            });
 
             renderApps();
         });
     });
 
-    // KEYBOARD SHORTCUT: CTRL/CMD + K
     document.addEventListener("keydown", event => {
-        if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
             event.preventDefault();
-            searchInput.focus();
-        }
-
-        if (event.key === "Escape") {
-            searchInput.blur();
+            searchInput?.focus();
         }
     });
-
-    // INITIALIZE
-    loadApps();
 });
