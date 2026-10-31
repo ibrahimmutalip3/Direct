@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", async () => {
     const appsGrid = document.getElementById("appsGrid");
     const searchInput = document.getElementById("searchInput");
@@ -114,10 +115,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         filteredApps.forEach(app => {
+            const isProfile = app.type === "profile";
+
             const card = document.createElement("a");
 
-            card.className = "app-card";
-            card.href = `./app.html?id=${encodeURIComponent(app.id)}`;
+            card.className = isProfile
+                ? "app-card profile-card"
+                : "app-card";
+
+            card.href = isProfile
+                ? app.profileUrl
+                : `./app.html?id=${encodeURIComponent(app.id)}`;
+
+            if (isProfile) {
+                card.setAttribute("aria-label", `Download ${app.name} profile`);
+            }
 
             const icon = document.createElement("img");
             icon.className = "app-icon";
@@ -147,11 +159,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             category.textContent = app.category || "Other";
 
             const version = document.createElement("span");
-            version.textContent = `v${app.version || "1.0.0"}`;
+            version.textContent = isProfile
+                ? "DNS Profile"
+                : `v${app.version || "1.0.0"}`;
 
             metadata.append(category, version);
             content.append(name, description, metadata);
             card.append(icon, content);
+
+            if (isProfile) {
+                card.addEventListener("click", event => {
+                    if (!app.profileUrl) {
+                        event.preventDefault();
+                        return;
+                    }
+                });
+            }
 
             appsGrid.appendChild(card);
         });
@@ -184,7 +207,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.addEventListener("keydown", event => {
-        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        if (
+            (event.ctrlKey || event.metaKey) &&
+            event.key.toLowerCase() === "k"
+        ) {
             event.preventDefault();
             searchInput?.focus();
         }
