@@ -1,0 +1,15 @@
+{
+  "id": "app-name",
+  "name": "App Name",
+  "description": "Short application description.",
+  "category": "Tools",
+  "version": "1.0.0",
+  "icon": "./assets/icons/app-name.svg",
+  "ipa": "",
+  "bundleId": "",
+  "manifestUrl": "",
+  "supportedDevices": [
+    "iPhone",
+    "iPad"
+  ]
+}
