@@ -12,7 +12,7 @@
                     <key>kind</key>
                     <string>software-package</string>
                     <key>url</key>
-                    <string>REPLACE_WITH_DIRECT_IPA_HTTPS_URL</string>
+                    <string>https://github.com/ibrahimmutalip3/Direct/releases/download/delta-v2.744.11082/Delta.AmaazbotsYT_2.744.11082_1793193633.ipa</string>
                 </dict>
             </array>
             <key>metadata</key>
@@ -20,7 +20,7 @@
                 <key>bundle-identifier</key>
                 <string>com.gloop.deltamobile</string>
                 <key>bundle-version</key>
-                <string>1.0.0</string>
+                <string>2.744.11082</string>
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
