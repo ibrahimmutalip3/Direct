@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0d">
+
+    <title>Direct — App Library</title>
+    <meta name="description" content="Discover and install your favorite apps with Direct.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="brand">
+            <div class="brand-icon">D</div>
+            <span>direct</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#apps">Apps</a>
+            <a href="#about">About</a>
+        </div>
+
+        <a href="#apps" class="nav-button">Explore apps <span>↗</span></a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-label">
+                <span class="status-dot"></span>
+                YOUR APP LIBRARY
+            </div>
+
+            <h1>Apps, just a<br><span>tap away.</span></h1>
+
+            <p>
+                Discover applications in one place.
+                Simple, clean and direct.
+            </p>
+
+            <a href="#apps" class="primary-button">
+                Explore library <span>↓</span>
+            </a>
+
+            <div class="hero-decoration">D.</div>
+        </section>
+
+        <section class="apps-section" id="apps">
+            <div class="section-header">
+                <div>
+                    <div class="section-label">LIBRARY</div>
+                    <h2>Discover apps</h2>
+                </div>
+
+                <span class="app-count" id="appCount">0 apps</span>
+            </div>
+
+            <div class="search-wrapper">
+                <span class="search-icon">⌕</span>
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search applications..."
+                    autocomplete="off"
+                >
+                <span class="search-shortcut">⌘ K</span>
+            </div>
+
+            <div class="category-list">
+                <button class="category active" data-category="All">All apps</button>
+                <button class="category" data-category="Utilities">Utilities</button>
+                <button class="category" data-category="Games">Games</button>
+                <button class="category" data-category="Tools">Tools</button>
+            </div>
+
+            <div class="apps-grid" id="appsGrid">
+                <div class="loading">Loading applications...</div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="about-card">
+                <div class="about-label">ABOUT DIRECT</div>
+                <h2>Everything you need.<br>Nothing you don't.</h2>
+                <p>
+                    A simple place to discover applications
+                    and access their official installation options.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="#" class="footer-brand">direct<span>.</span></a>
+        <p>Independent application library.</p>
+        <span class="copyright">© 2026 Direct</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
