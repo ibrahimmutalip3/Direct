@@ -8,6 +8,7 @@
         "icon": "./assets/icons/delta.svg",
         "ipa": "",
         "bundleId": "",
-        "supportedDevices": ["iPhone"]
+        "supportedDevices": ["iPhone"],
+        "screenshots": []
     }
 ]
