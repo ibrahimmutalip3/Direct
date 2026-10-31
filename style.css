@@ -937,3 +937,43 @@ footer p,
         grid-template-columns: 1fr;
     }
 }
+
+.release-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 54px;
+    padding: 16px 22px;
+    border-radius: 15px;
+    background: #d8ff64;
+    color: #101010;
+    font-size: 15px;
+    font-weight: 750;
+    text-decoration: none;
+    border: 1px solid rgba(216,255,100,.4);
+    box-shadow: 0 5px 20px rgba(216,255,100,.12);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.release-download::before {
+    content: "↓";
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.release-download:not(.disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(216,255,100,.22);
+}
+
+.release-download:not(.disabled):active {
+    transform: scale(.97);
+}
+
+.release-download.disabled {
+    opacity: .35;
+    pointer-events: none;
+    box-shadow: none;
+}
