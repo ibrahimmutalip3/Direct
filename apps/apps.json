@@ -1,0 +1,13 @@
+[
+    {
+        "id": "delta",
+        "name": "Delta",
+        "description": "A powerful Roblox utility application.",
+        "category": "Tools",
+        "version": "1.0.0",
+        "icon": "./assets/icons/delta.png",
+        "ipa": "",
+        "bundleId": "",
+        "supportedDevices": ["iPhone"]
+    }
+]
