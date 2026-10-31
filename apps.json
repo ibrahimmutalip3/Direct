@@ -10,7 +10,7 @@
         "releaseTag": "delta-v2.744.11082",
         "assetName": "Delta.AmaazbotsYT_2.744.11082_1793193633.ipa",
         "icon": "./assets/icons/IMG_7589.png",
-        "bundleId": "",
+        "bundleId": "com.gloop.deltamobile",
         "supportedDevices": ["iPhone"],
         "screenshots": [],
         "dateAdded": "2026-10-31"
@@ -27,7 +27,7 @@
         "releaseTag": "esign-v5.0.2",
         "assetName": "ESign_5.0.2_1793441567.ipa",
         "icon": "./assets/icons/esign.png",
-        "bundleId": "",
+        "bundleId": "p3.xyz.yyyue.esign",
         "supportedDevices": ["iPhone"],
         "screenshots": [],
         "dateAdded": "2026-10-31"
