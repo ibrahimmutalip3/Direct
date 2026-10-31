@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0d">
+
+    <title>Application — Direct</title>
+    <meta name="description" content="Application details on Direct.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="./index.html" class="brand">
+            <div class="brand-icon">D</div>
+            <span>direct</span>
+        </a>
+
+        <a href="./index.html#apps" class="nav-button">
+            ← Back to library
+        </a>
+    </header>
+
+    <main class="app-detail-page">
+
+        <a href="./index.html#apps" class="back-link">
+            ← All applications
+        </a>
+
+        <section class="app-detail-card" id="appDetail">
+            <div class="detail-loading">
+                Loading application...
+            </div>
+        </section>
+
+        <section class="detail-information">
+            <div class="section-label">INFORMATION</div>
+            <h2>About this application</h2>
+            <p id="appLongDescription">
+                Application information will appear here.
+            </p>
+        </section>
+
+        <div class="detail-notice">
+            <span class="notice-icon">ⓘ</span>
+            <p>
+                Only install applications from sources you trust.
+                Installation availability depends on the app's
+                signature and distribution method.
+            </p>
+        </div>
+
+    </main>
+
+    <footer>
+        <a href="./index.html" class="footer-brand">direct<span>.</span></a>
+        <p>Independent application library.</p>
+        <span class="copyright">© 2026 Direct</span>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
