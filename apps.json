@@ -5,6 +5,7 @@
         "description": "A powerful Roblox utility application.",
         "category": "Tools",
         "version": "2.744.11082",
+        "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/delta.plist",
         "icon": "./assets/icons/delta.svg",
         "ipa": "",
         "bundleId": "",
