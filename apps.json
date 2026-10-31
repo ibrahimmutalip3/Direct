@@ -31,5 +31,17 @@
         "supportedDevices": ["iPhone"],
         "screenshots": [],
         "dateAdded": "2026-10-31"
+    },
+    
+    {
+        "id": "cfdns",
+        "type": "profile",
+        "name": "CFDNS",
+        "description": "Custom DNS configuration profile for iOS.",
+        "category": "Utilities",
+        "version": "1.0.0",
+        "profileUrl": "./profiles/cfdns.mobileconfig",
+        "icon": "./assets/icons/cfdns.png",
+        "dateAdded": "2026-10-31"
     }
 ]
