@@ -561,3 +561,185 @@ footer p,
         transition-duration: .01ms !important;
     }
 }
+
+/* APPLICATION DETAIL PAGE */
+
+.app-detail-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 55px 6% 100px;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 25px;
+    transition: color .2s ease;
+}
+
+.back-link:hover {
+    color: white;
+}
+
+.app-detail-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    padding: 40px;
+}
+
+.detail-loading,
+.detail-error {
+    color: var(--muted);
+    text-align: center;
+    padding: 45px 15px;
+}
+
+.detail-error h2 {
+    color: white;
+    margin-bottom: 12px;
+}
+
+.detail-error p {
+    margin-bottom: 20px;
+}
+
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.detail-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+    object-fit: cover;
+    background: #222;
+}
+
+.detail-title h1 {
+    font-size: 38px;
+    letter-spacing: -2px;
+    margin-top: 12px;
+}
+
+.detail-version {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.detail-description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 30px;
+    max-width: 650px;
+}
+
+.detail-actions {
+    margin-top: 30px;
+}
+
+.install-button {
+    border: none;
+    border-radius: 12px;
+    padding: 16px 24px;
+    background: var(--accent);
+    color: #101010;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s ease, opacity .2s ease;
+}
+
+.install-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.install-button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.detail-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 35px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+}
+
+.metadata-item {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.detail-information {
+    padding: 55px 0 35px;
+}
+
+.detail-information h2 {
+    font-size: 30px;
+    letter-spacing: -1px;
+    margin-top: 12px;
+}
+
+.detail-information p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-top: 16px;
+}
+
+.detail-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: var(--surface);
+}
+
+.notice-icon {
+    color: var(--accent);
+    font-size: 17px;
+}
+
+.detail-notice p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .app-detail-page {
+        padding-top: 35px;
+    }
+
+    .app-detail-card {
+        padding: 25px 20px;
+    }
+
+    .detail-header {
+        gap: 17px;
+    }
+
+    .detail-icon {
+        width: 75px;
+        height: 75px;
+        border-radius: 19px;
+    }
+
+    .detail-title h1 {
+        font-size: 27px;
+    }
+
+    .install-button {
+        width: 100%;
+    }
+}
