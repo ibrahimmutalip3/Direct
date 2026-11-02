@@ -67,5 +67,27 @@
             "iPad"
         ],
         "updatedAt": "2026-11-02"
+    },
+    {
+        "id": "scarlet",
+        "type": "app",
+        "name": "Scarlet",
+        "description": "",
+        "category": "Other",
+        "icon": "./assets/logo.svg",
+        "screenshots": [],
+        "dateAdded": "2026-11-02",
+        "version": "1.0",
+        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/scarlet-v1.0/Scarlet_1.0_1793631044.ipa",
+        "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/scarlet.plist",
+        "releaseTag": "scarlet-v1.0",
+        "assetName": "Scarlet_1.0_1793631044.ipa",
+        "bundleId": "com.DebianArch.ScarletPersonalXYZZZ",
+        "bundleVersion": "1",
+        "supportedDevices": [
+            "iPhone",
+            "iPad"
+        ],
+        "updatedAt": "2026-11-02"
     }
 ]
