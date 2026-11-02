@@ -11,11 +11,12 @@
         "assetName": "Delta.AmaazbotsYT_2.744.11082_1793193633.ipa",
         "icon": "./assets/icons/IMG_7589.png",
         "bundleId": "com.gloop.deltamobile",
-        "supportedDevices": ["iPhone"],
+        "supportedDevices": [
+            "iPhone"
+        ],
         "screenshots": [],
         "dateAdded": "2026-10-31"
     },
-
     {
         "id": "esign",
         "name": "ESign",
@@ -28,11 +29,12 @@
         "assetName": "ESign_5.0.2_1793441567.ipa",
         "icon": "./assets/icons/esign.png",
         "bundleId": "p3.xyz.yyyue.esign",
-        "supportedDevices": ["iPhone"],
+        "supportedDevices": [
+            "iPhone"
+        ],
         "screenshots": [],
         "dateAdded": "2026-10-31"
     },
-    
     {
         "id": "cfdns",
         "type": "profile",
@@ -43,5 +45,27 @@
         "profileUrl": "./profiles/cfdns.mobileconfig",
         "icon": "./assets/icons/cfdns.png",
         "dateAdded": "2026-10-31"
+    },
+    {
+        "id": "ksign",
+        "type": "app",
+        "name": "Ksign",
+        "description": "",
+        "category": "Other",
+        "icon": "./assets/logo.svg",
+        "screenshots": [],
+        "dateAdded": "2026-11-02",
+        "version": "1.5.1",
+        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/ksign-v1.5.1/Ksign_1.5.1_1793596215.ipa",
+        "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/ksign.plist",
+        "releaseTag": "ksign-v1.5.1",
+        "assetName": "Ksign_1.5.1_1793596215.ipa",
+        "bundleId": "nya.asami.ksign",
+        "bundleVersion": "1",
+        "supportedDevices": [
+            "iPhone",
+            "iPad"
+        ],
+        "updatedAt": "2026-11-02"
     }
 ]
