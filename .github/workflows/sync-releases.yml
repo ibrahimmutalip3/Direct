@@ -36,11 +36,15 @@ jobs:
 
       - name: Resolve release tag
         id: release
+        env:
+          INPUT_TAG: ${{ inputs.release_tag }}
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_TAG: ${{ github.ref_name }}
         run: |
-          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
-            TAG="${{ inputs.release_tag }}"
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            TAG="$INPUT_TAG"
           else
-            TAG="$GITHUB_REF_NAME"
+            TAG="$EVENT_TAG"
           fi
 
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
@@ -49,18 +53,20 @@ jobs:
       - name: Download release information
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
         run: |
           gh api \
-            "repos/$GITHUB_REPOSITORY/releases/tags/${{ steps.release.outputs.tag }}" \
+            "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" \
             > "$RUNNER_TEMP/release.json"
 
       - name: Download IPA
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
         run: |
           mkdir -p "$RUNNER_TEMP/ipa"
 
-          gh release download "${{ steps.release.outputs.tag }}" \
+          gh release download "$RELEASE_TAG" \
             --repo "$GITHUB_REPOSITORY" \
             --pattern "*.ipa" \
             --dir "$RUNNER_TEMP/ipa"
@@ -79,6 +85,8 @@ jobs:
             "$RUNNER_TEMP/ipa"
 
       - name: Commit changes
+        env:
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email \
@@ -91,5 +99,5 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore: sync release ${{ steps.release.outputs.tag }}"
+          git commit -m "chore: sync release $RELEASE_TAG"
           git push origin HEAD:main
