@@ -5,6 +5,13 @@ on:
   release:
     types: [published]
 
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Existing GitHub Release tag"
+        required: true
+        type: string
+
 permissions:
   contents: write
 
@@ -27,12 +34,24 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Resolve release tag
+        id: release
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            TAG="${{ inputs.release_tag }}"
+          else
+            TAG="$GITHUB_REF_NAME"
+          fi
+
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Processing release: $TAG"
+
       - name: Download release information
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh api \
-            "repos/$GITHUB_REPOSITORY/releases/tags/$GITHUB_REF_NAME" \
+            "repos/$GITHUB_REPOSITORY/releases/tags/${{ steps.release.outputs.tag }}" \
             > "$RUNNER_TEMP/release.json"
 
       - name: Download IPA
@@ -41,7 +60,7 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/ipa"
 
-          gh release download "$GITHUB_REF_NAME" \
+          gh release download "${{ steps.release.outputs.tag }}" \
             --repo "$GITHUB_REPOSITORY" \
             --pattern "*.ipa" \
             --dir "$RUNNER_TEMP/ipa"
@@ -72,5 +91,5 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore: sync release $GITHUB_REF_NAME"
+          git commit -m "chore: sync release ${{ steps.release.outputs.tag }}"
           git push origin HEAD:main
