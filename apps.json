@@ -89,5 +89,27 @@
             "iPad"
         ],
         "updatedAt": "2026-11-02"
+    },
+    {
+        "id": "sideinstaller",
+        "type": "app",
+        "name": "SideInstaller",
+        "description": "",
+        "category": "Other",
+        "icon": "./assets/logo.svg",
+        "screenshots": [],
+        "dateAdded": "2026-11-02",
+        "version": "1.6.4",
+        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/sideinstaller-v1.6.4/SideInstaller_1.6.4_1793631956.ipa",
+        "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/sideinstaller.plist",
+        "releaseTag": "sideinstaller-v1.6.4",
+        "assetName": "SideInstaller_1.6.4_1793631956.ipa",
+        "bundleId": "com.frizzlem.sideinstaller",
+        "bundleVersion": "1",
+        "supportedDevices": [
+            "iPhone",
+            "iPad"
+        ],
+        "updatedAt": "2026-11-02"
     }
 ]
