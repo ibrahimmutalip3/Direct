@@ -4,18 +4,22 @@
         "name": "Delta",
         "description": "A powerful Roblox utility application.",
         "category": "Games",
-        "version": "2.744.11082",
-        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/delta-v2.744.11082/Delta.AmaazbotsYT_2.744.11082_1793193633.ipa",
+        "version": "2.745.1138",
+        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/delta-v2.745.1138/Delta_2.745.1138_1794306998.ipa",
         "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/delta.plist",
-        "releaseTag": "delta-v2.744.11082",
-        "assetName": "Delta.AmaazbotsYT_2.744.11082_1793193633.ipa",
+        "releaseTag": "delta-v2.745.1138",
+        "assetName": "Delta_2.745.1138_1794306998.ipa",
         "icon": "./assets/icons/IMG_7589.png",
         "bundleId": "com.gloop.deltamobile",
         "supportedDevices": [
-            "iPhone"
+            "iPhone",
+            "iPad"
         ],
         "screenshots": [],
-        "dateAdded": "2026-10-31"
+        "dateAdded": "2026-10-31",
+        "type": "app",
+        "bundleVersion": "2.745.1138",
+        "updatedAt": "2026-11-10"
     },
     {
         "id": "esign",
