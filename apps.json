@@ -115,5 +115,27 @@
             "iPad"
         ],
         "updatedAt": "2026-11-02"
+    },
+    {
+        "id": "filza",
+        "type": "app",
+        "name": "filza27.2",
+        "description": "",
+        "category": "Other",
+        "icon": "./assets/logo.svg",
+        "screenshots": [],
+        "dateAdded": "2026-11-14",
+        "version": "4.0",
+        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/filza-v4.0/filza27.2_4.0_1794663657.ipa",
+        "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/filza.plist",
+        "releaseTag": "filza-v4.0",
+        "assetName": "filza27.2_4.0_1794663657.ipa",
+        "bundleId": "com.jbjf.filza",
+        "bundleVersion": "0",
+        "supportedDevices": [
+            "iPhone",
+            "iPad"
+        ],
+        "updatedAt": "2026-11-14"
     }
 ]
