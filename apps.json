@@ -137,5 +137,27 @@
             "iPad"
         ],
         "updatedAt": "2026-11-14"
+    },
+    {
+        "id": "weather",
+        "type": "app",
+        "name": "Weather+",
+        "description": "",
+        "category": "Other",
+        "icon": "./assets/logo.svg",
+        "screenshots": [],
+        "dateAdded": "2026-11-15",
+        "version": "1.0.0",
+        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/weather-v1.0.0/Weather%2B_1.0.0_1794726129.ipa",
+        "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/weather.plist",
+        "releaseTag": "weather-v1.0.0",
+        "assetName": "Weather+_1.0.0_1794726129.ipa",
+        "bundleId": "com.example.weatherApp",
+        "bundleVersion": "1",
+        "supportedDevices": [
+            "iPhone",
+            "iPad"
+        ],
+        "updatedAt": "2026-11-15"
     }
 ]
