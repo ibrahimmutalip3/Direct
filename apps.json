@@ -159,5 +159,27 @@
             "iPad"
         ],
         "updatedAt": "2026-11-15"
+    },
+    {
+        "id": "navai",
+        "type": "app",
+        "name": "NavAI",
+        "description": "",
+        "category": "Other",
+        "icon": "./assets/logo.svg",
+        "screenshots": [],
+        "dateAdded": "2026-11-15",
+        "version": "1.0.0",
+        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/navai-v1.0.0/NavAI_1.0.0_1794727078.ipa",
+        "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/navai.plist",
+        "releaseTag": "navai-v1.0.0",
+        "assetName": "NavAI_1.0.0_1794727078.ipa",
+        "bundleId": "com.navigatorapp.navigationApp",
+        "bundleVersion": "1",
+        "supportedDevices": [
+            "iPhone",
+            "iPad"
+        ],
+        "updatedAt": "2026-11-15"
     }
 ]
