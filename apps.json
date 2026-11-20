@@ -214,16 +214,16 @@
         "screenshots": [],
         "dateAdded": "2026-11-19",
         "version": "1.0.0",
-        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/alexbrowser-v1.0.0/Alex.Browser_1.0.0_1795115031.ipa",
+        "ipa": "https://github.com/ibrahimmutalip3/Direct/releases/download/alexbrowser-v1.0.0/Alex.Browser_1.0.0_1795146509.ipa",
         "manifestUrl": "https://ibrahimmutalip3.github.io/Direct/manifests/alexbrowser.plist",
         "releaseTag": "alexbrowser-v1.0.0",
-        "assetName": "Alex.Browser_1.0.0_1795115031.ipa",
+        "assetName": "Alex.Browser_1.0.0_1795146509.ipa",
         "bundleId": "com.alexbrowser.app",
         "bundleVersion": "1",
         "supportedDevices": [
             "iPhone",
             "iPad"
         ],
-        "updatedAt": "2026-11-19"
+        "updatedAt": "2026-11-20"
     }
 ]
